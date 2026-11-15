@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">&#9673;</div>
+    <div>
+      <h1>Token Launch Radar</h1>
+      <p class="tagline">Protocols that record no token yet, ranked by what their token would be worth if the record stayed as it is.</p>
+    </div>
+  </div>
+  <div class="mast-meta" id="mastMeta"></div>
+</header>
+
+<section class="model-strip" id="modelStrip" aria-label="How the model works"></section>
+
+<section class="controls" aria-label="Board controls">
+  <label class="ctl grow">Search
+    <input id="q" type="search" placeholder="Protocol or slug..." autocomplete="off">
+  </label>
+  <label class="ctl">Category
+    <select id="cat"><option value="">All categories</option></select>
+  </label>
+  <label class="ctl">Chain
+    <select id="chain"><option value="">All chains</option></select>
+  </label>
+  <label class="ctl">Sort by
+    <select id="sort">
+      <option value="value">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="growth">7-day growth</option>
+      <option value="age">Time with no token</option>
+      <option value="name">Name</option>
+    </select>
+  </label>
+  <label class="ctl check"><input id="watchOnly" type="checkbox"> Watchlist only</label>
+  <span class="count" id="rowCount"></span>
+</section>
+
+<main>
+  <div class="table-wrap">
+    <table id="board" aria-label="Ranked board">
+      <thead>
+        <tr>
+          <th class="num">#</th><th>Protocol</th><th>Category</th>
+          <th class="num">TVL</th><th class="num">7d</th>
+          <th class="num">No token for</th><th class="num">Implied value</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="boardBody"></tbody>
+    </table>
+  </div>
+
+  <section id="detail" class="detail" hidden aria-label="Protocol detail"></section>
+
+  <section class="live" aria-label="Already launched">
+    <h2>Already launched — the comparison set</h2>
+    <p class="live-note">These protocols already trade a token. The radar sets them aside; their market-cap-to-TVL multiples are what the model's category multiples are read against.</p>
+    <div class="table-wrap">
+      <table id="liveTable">
+        <thead><tr><th>Protocol</th><th>Symbol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">MCap / TVL</th></tr></thead>
+        <tbody id="liveBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Implied value is this board's own claim, computed from the sealed snapshot alone; it is not a prediction that a token will be issued. A protocol "records no token" in the snapshot — that is not proof it has none. Farming any protocol is speculative; size positions accordingly.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
